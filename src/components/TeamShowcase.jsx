@@ -43,34 +43,53 @@ export function TeamProfile({ person, onClose }) {
   )
 }
 
+function PersonCard({ person, onSelect }) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(person)}
+      className="w-full min-w-0 text-left"
+    >
+      <div className="overflow-hidden rounded-[40%_40%_20%_20%]">
+        <img
+          src={person.image}
+          alt={person.name}
+          className="aspect-[3/4] w-full object-cover transition duration-500 hover:scale-105"
+        />
+      </div>
+      <p className="mt-4 text-xl font-extrabold text-plum">{person.name}</p>
+      <p className="text-[11px] font-bold tracking-[0.14em] text-coral uppercase">
+        {person.role}
+      </p>
+      <p className="mt-2 text-sm text-warm-gray">{person.philosophy}</p>
+    </button>
+  )
+}
+
 export default function TeamShowcase({ people }) {
   const [active, setActive] = useState(null)
 
   return (
     <>
-      <div className="no-scrollbar -mx-5 flex gap-6 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
-        {people.map((person) => (
-          <button
-            key={person.id}
-            type="button"
-            onClick={() => setActive(person)}
-            className="w-[240px] shrink-0 text-left sm:w-[280px]"
-          >
-            <div className="overflow-hidden rounded-[40%_40%_20%_20%]">
-              <img
-                src={person.image}
-                alt={person.name}
-                className="aspect-[3/4] w-full object-cover transition duration-500 hover:scale-105"
-              />
+      {/* Mobile: horizontal scroll with end spacer so the last card isn't clipped */}
+      <div className="md:hidden">
+        <div className="no-scrollbar -mx-5 flex gap-5 overflow-x-auto px-5 pb-4 snap-x snap-mandatory">
+          {people.map((person) => (
+            <div key={person.id} className="w-[72vw] max-w-[280px] shrink-0 snap-start">
+              <PersonCard person={person} onSelect={setActive} />
             </div>
-            <p className="mt-4 text-xl font-extrabold text-plum">{person.name}</p>
-            <p className="text-[11px] font-bold tracking-[0.14em] text-coral uppercase">
-              {person.role}
-            </p>
-            <p className="mt-2 text-sm text-warm-gray">{person.philosophy}</p>
-          </button>
+          ))}
+          <div className="w-1 shrink-0" aria-hidden="true" />
+        </div>
+      </div>
+
+      {/* Tablet/desktop: wrapping grid — every portrait fully visible */}
+      <div className="hidden gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {people.map((person) => (
+          <PersonCard key={person.id} person={person} onSelect={setActive} />
         ))}
       </div>
+
       <TeamProfile person={active} onClose={() => setActive(null)} />
     </>
   )
