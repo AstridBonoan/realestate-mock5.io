@@ -159,8 +159,8 @@ export const properties = [
     availability: 'Illustrative — mock listing',
     images: [
       'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1600&q=80',
-      'https://images.unsplash.com/photo-1460317442991-0ec209451987?w=1200&q=80',
-      'https://images.unsplash.com/photo-1486307656982-3ca2f1bb3dab?w=1200&q=80',
+      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80',
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
     ],
   },
 ]
