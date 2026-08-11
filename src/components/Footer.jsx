@@ -97,21 +97,26 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-warm-gray sm:flex-row sm:justify-between md:px-8">
-          <p>
-            © {new Date().getFullYear()} {company.name}. Mockup Design #6.
-          </p>
-          <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-plum">
-              Privacy
-            </Link>
-            <Link to="/terms" className="hover:text-plum">
-              Terms
-            </Link>
-            <Link to="/disclaimer" className="hover:text-plum">
-              Disclaimer
-            </Link>
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-5 text-xs text-warm-gray md:px-8">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} {company.name}. Mockup Design #6.
+            </p>
+            <div className="flex gap-4">
+              <Link to="/privacy" className="hover:text-plum">
+                Privacy
+              </Link>
+              <Link to="/terms" className="hover:text-plum">
+                Terms
+              </Link>
+              <Link to="/disclaimer" className="hover:text-plum">
+                Disclaimer
+              </Link>
+            </div>
           </div>
+          <p className="border-t border-line pt-3 text-[11px] tracking-wide text-warm-gray/90">
+            Design &amp; development by B&amp;C Software &amp; Web.
+          </p>
         </div>
       </div>
     </footer>
