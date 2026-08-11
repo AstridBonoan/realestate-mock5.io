@@ -1,36 +1,38 @@
-const logoSrc = `${import.meta.env.BASE_URL}branding/bc-logo.png`
+import logoUrl from '../assets/bc-logo.png'
 
 export default function BrandingMarks() {
   return (
     <>
-      {/* Soft tiled watermark — screenshots retain ownership, non-interactive */}
+      {/* Soft tiled watermark above content so screenshots show ownership */}
       <div
-        className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
+        className="pointer-events-none fixed inset-0 z-[60] overflow-hidden"
         aria-hidden="true"
       >
         <div
-          className="absolute inset-[-12%] opacity-[0.04]"
+          className="absolute inset-[-20%] opacity-[0.07]"
           style={{
-            backgroundImage: `url(${logoSrc})`,
+            backgroundImage: `url(${logoUrl})`,
             backgroundRepeat: 'repeat',
-            backgroundSize: '200px auto',
+            backgroundSize: '180px auto',
             backgroundPosition: 'center',
-            transform: 'rotate(-12deg)',
+            transform: 'rotate(-14deg)',
+            mixBlendMode: 'multiply',
           }}
         />
       </div>
 
-      {/* Corner badge — visible ownership without competing with the design */}
+      {/* Corner badge */}
       <div
-        className="pointer-events-none fixed right-3 bottom-3 z-[45] rounded-md border border-line/80 bg-white/92 px-2.5 py-2 shadow-sm backdrop-blur-sm sm:right-4 sm:bottom-4"
-        aria-hidden="true"
+        className="fixed right-3 bottom-3 z-[70] rounded-md border border-slate-200 bg-white px-2.5 py-2 shadow-md sm:right-5 sm:bottom-5"
+        aria-label="Design and development by B and C Software and Web"
       >
         <img
-          src={logoSrc}
-          alt=""
-          className="h-8 w-auto opacity-90 sm:h-9"
+          src={logoUrl}
+          alt="B&C Software & Web"
+          className="h-9 w-auto sm:h-10"
+          width={120}
+          height={40}
         />
-        <span className="sr-only">Design & development by B&C Software & Web</span>
       </div>
     </>
   )

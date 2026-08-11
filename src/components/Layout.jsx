@@ -21,14 +21,12 @@ export default function Layout() {
 
   return (
     <div className="relative flex min-h-screen flex-col bg-white">
+      <Navigation />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
       <BrandingMarks />
-      <div className="relative z-10 flex min-h-screen flex-col">
-        <Navigation />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
     </div>
   )
 }
