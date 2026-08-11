@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-charcoal: #0f1412;
+  --color-charcoal-soft: #1a211e;
+  --color-ink: #2a332f;
+  --color-muted: #5c6b64;
+  --color-border: #e4e9e6;
+  --color-surface: #f5f7f6;
+  --color-cream: #faf9f7;
+  --color-emerald: #059669;
+  --color-emerald-dark: #047857;
+  --color-emerald-light: #10b981;
+  --color-sage: #a7c4b5;
+  --color-sage-soft: #d7e6dd;
+
+  --shadow-soft: 0 4px 24px rgba(15, 20, 18, 0.06);
+  --shadow-card: 0 8px 32px rgba(15, 20, 18, 0.08);
+  --shadow-float: 0 16px 48px rgba(15, 20, 18, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes draw-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 5.5s ease-in-out 0.6s infinite;
+}
+
+.animate-float-slow {
+  animation: float 6.5s ease-in-out 1.2s infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.network-line {
+  stroke-dasharray: 6 6;
+  animation: pulse-line 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-float,
+  .animate-float-delayed,
+  .animate-float-slow,
+  .network-line {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
