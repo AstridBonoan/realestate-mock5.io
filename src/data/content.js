@@ -1,169 +1,174 @@
-export const team = [
+export const people = [
   {
-    id: '1',
-    name: 'Eleanor Voss',
-    position: 'Founding Principal',
-    bio: 'Eleanor guides Ashlar’s long-term vision—membership, partnerships, and the editorial discipline of how opportunities are presented. Placeholder biography for Mockup Design #5.',
+    id: 'lena',
+    name: 'Lena Ortiz',
+    role: 'Founder',
+    philosophy: 'Relationships compound faster than square footage.',
+    bio: 'Lena started KINDRED to put people before listings—building a network where introductions create real opportunity. Placeholder profile for Mockup Design #6.',
     image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1000&q=80',
-    featured: true,
+      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80',
   },
   {
-    id: '2',
-    name: 'Thomas Hale',
-    position: 'Director of Membership',
-    bio: 'Thomas oversees member onboarding and the relationships that sustain the Ashlar community. Placeholder biography.',
+    id: 'noah',
+    name: 'Noah Bennett',
+    role: 'Community Lead',
+    philosophy: 'A network only works when people feel known.',
+    bio: 'Noah designs gatherings and pathways that help members meet, share, and stay connected. Placeholder profile.',
     image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=700&q=80',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80',
   },
   {
-    id: '3',
-    name: 'Amira Soltani',
-    position: 'Partnerships Lead',
-    bio: 'Amira cultivates conversations with owners, developers, and organizations seeking durable collaboration. Placeholder biography.',
+    id: 'aya',
+    name: 'Aya Rahman',
+    role: 'Opportunity Desk',
+    philosophy: 'Clarity beats noise—every opportunity deserves context.',
+    bio: 'Aya curates announcements across property, investment, and rental pathways. Placeholder profile.',
     image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=80',
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80',
   },
   {
-    id: '4',
-    name: 'James Okonkwo',
-    position: 'Property Desk',
-    bio: 'James curates the property index—investments, rentals, and opportunities presented with editorial clarity. Placeholder biography.',
+    id: 'marcus',
+    name: 'Marcus Hale',
+    role: 'Partnerships',
+    philosophy: 'We don’t build alone—and we shouldn’t try.',
+    bio: 'Marcus opens conversations with owners, developers, and organizations. Placeholder profile.',
     image:
-      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700&q=80',
+      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80',
   },
   {
-    id: '5',
-    name: 'Clara Nguyen',
-    position: 'Community Relations',
-    bio: 'Clara supports programs and introductions that keep the network warm, selective, and useful. Placeholder biography.',
+    id: 'sofia',
+    name: 'Sofia Chen',
+    role: 'Member Experience',
+    philosophy: 'Joining should feel like belonging, not onboarding.',
+    bio: 'Sofia shapes how people enter and grow inside the KINDRED community. Placeholder profile.',
     image:
-      'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=700&q=80',
+      'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80',
   },
 ]
 
-export const membershipReasons = [
+export const journeyStages = [
   {
-    number: '01',
-    title: 'CONNECTION',
-    description: 'Build relationships with people connected to real estate.',
+    id: 'discover',
+    title: 'DISCOVER',
+    text: 'Learn the idea behind KINDRED and see who is already gathering.',
   },
   {
-    number: '02',
-    title: 'COLLABORATION',
-    description: 'Create opportunities through meaningful partnerships.',
+    id: 'connect',
+    title: 'CONNECT',
+    text: 'Meet members, partners, and people aligned with your goals.',
   },
   {
-    number: '03',
-    title: 'DISCOVERY',
-    description: 'Stay connected to properties and opportunities.',
+    id: 'participate',
+    title: 'PARTICIPATE',
+    text: 'Join conversations, events, and shared exploration of opportunities.',
   },
   {
-    number: '04',
-    title: 'GROWTH',
-    description: 'Develop relationships that can support long-term goals.',
-  },
-]
-
-export const focusAreas = [
-  {
-    number: '01',
-    title: 'MEMBERSHIP',
-    description:
-      'A selective professional community for people who want lasting relationships within real estate.',
-    to: '/membership',
+    id: 'contribute',
+    title: 'CONTRIBUTE',
+    text: 'Bring a property, introduction, idea, or partnership to the table.',
   },
   {
-    number: '02',
-    title: 'INVESTMENTS',
-    description:
-      'Curated opportunities presented with clarity for members and partners exploring capital allocation.',
-    to: '/properties',
-  },
-  {
-    number: '03',
-    title: 'RENTALS',
-    description:
-      'Selected residential and commercial rentals surfaced through the Ashlar property desk.',
-    to: '/properties',
-  },
-  {
-    number: '04',
-    title: 'PARTNERSHIPS',
-    description:
-      'Structured conversations with owners, developers, investors, and organizations.',
-    to: '/partners',
+    id: 'grow',
+    title: 'GROW',
+    text: 'Build long-term relationships that open the next chapter.',
   },
 ]
 
-export const partnerTypes = [
+export const communityTypes = [
+  'Members',
+  'Investors',
+  'Property Owners',
+  'Developers',
+  'Professionals',
+  'Businesses',
+  'Partners',
+]
+
+export const partnerPathways = [
   {
     number: '01',
-    title: 'Property Owners',
-    description:
-      'Share inventory and explore relationships with members seeking quality opportunities.',
+    title: 'PROPERTY OWNERS',
+    description: 'Share inventory and meet people ready for thoughtful collaboration.',
+    example: 'Example: An owner introduces a multifamily asset to the opportunity desk.',
   },
   {
     number: '02',
-    title: 'Investors',
-    description:
-      'Engage with curated opportunities and a network oriented toward thoughtful capital.',
+    title: 'INVESTORS',
+    description: 'Engage with curated announcements and relationship-led deal flow.',
+    example: 'Example: An investor joins a conversation around a community-backed rental.',
   },
   {
     number: '03',
-    title: 'Developers',
-    description:
-      'Find collaborators, operators, and introductions aligned with your pipeline.',
+    title: 'DEVELOPERS',
+    description: 'Find collaborators who value long-term thinking over quick flips.',
+    example: 'Example: A developer seeks partners for a phased neighborhood project.',
   },
   {
     number: '04',
-    title: 'Businesses',
-    description:
-      'Connect services and expertise with a community grounded in real estate practice.',
+    title: 'BUSINESSES',
+    description: 'Align services with a growing network of real estate people.',
+    example: 'Example: A local firm supports members with specialized expertise.',
   },
   {
     number: '05',
-    title: 'Real Estate Professionals',
-    description:
-      'Expand your practice through referrals, introductions, and shared deal flow.',
+    title: 'PROFESSIONALS',
+    description: 'Expand your practice through introductions that feel intentional.',
+    example: 'Example: An advisor connects two members exploring a joint venture.',
   },
   {
     number: '06',
-    title: 'Organizations',
-    description:
-      'Collaborate on programs and initiatives that strengthen the broader ecosystem.',
+    title: 'ORGANIZATIONS',
+    description: 'Collaborate on programs that strengthen the broader ecosystem.',
+    example: 'Example: A nonprofit co-hosts a community learning series.',
   },
 ]
 
-export const aboutSections = [
+export const journalArticles = [
   {
-    id: 'story',
-    label: 'THE STORY',
-    title: 'A house built on judgment.',
-    body: 'Ashlar began as a belief that real estate deserves the discipline of a journal and the care of a property house. We publish opportunities carefully, convene people selectively, and treat relationships as the true asset.',
+    id: 'featured',
+    category: 'Community',
+    title: 'Why Real Estate Needs More Than Listings',
+    description:
+      'A look at how relationship-first networks change the way people discover opportunity.',
+    date: 'March 12, 2026',
+    image:
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80',
+    featured: true,
   },
   {
-    id: 'mission',
-    label: 'THE MISSION',
-    title: 'Connect people to lasting opportunity.',
-    body: 'Our mission is to create a connected real estate community where people, partnerships, and opportunities can grow together—with clarity, taste, and long-term thinking.',
+    id: 'markets',
+    category: 'Markets',
+    title: 'Reading Local Momentum Without the Noise',
+    description: 'Placeholder article on observing markets through people and place.',
+    date: 'March 4, 2026',
+    image:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80',
   },
   {
-    id: 'vision',
-    label: 'THE VISION',
-    title: 'A recognized network around real estate.',
-    body: 'We aim to become a trusted editorial and membership organization known for judgment: what we present, whom we introduce, and how we cultivate collaboration.',
+    id: 'partnerships',
+    category: 'Partnerships',
+    title: 'What Good Collaboration Looks Like',
+    description: 'Placeholder notes on aligning owners, capital, and operators.',
+    date: 'February 21, 2026',
+    image:
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&q=80',
   },
   {
-    id: 'approach',
-    label: 'THE APPROACH',
-    title: 'Editorial. Relational. Selective.',
-    body: 'We combine long-form thinking with practical access—membership, curated properties, and partnership conversations—without reducing the work to a marketplace alone.',
+    id: 'property',
+    category: 'Property',
+    title: 'From Announcement to Conversation',
+    description: 'How KINDRED presents opportunities as stories, not just specs.',
+    date: 'February 10, 2026',
+    image:
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80',
   },
   {
-    id: 'values',
-    label: 'THE VALUES',
-    title: 'Trust, craft, and patience.',
-    body: 'We value relationships over noise, clarity over spectacle, and sustainable growth over short cycles. Buildings create spaces; relationships create opportunities.',
+    id: 'business',
+    category: 'Business',
+    title: 'Building Organizations That Last',
+    description: 'Placeholder essay on patience, trust, and network effects.',
+    date: 'January 28, 2026',
+    image:
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&q=80',
   },
 ]

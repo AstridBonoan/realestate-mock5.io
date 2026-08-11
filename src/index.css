@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 
-  --color-ivory: #f7f1e8;
-  --color-parchment: #f3ebe0;
-  --color-beige: #e8dccf;
-  --color-clay: #c4a484;
-  --color-terracotta: #c45c3e;
-  --color-sienna: #a34832;
-  --color-burgundy: #7a2e2e;
-  --color-espresso: #1c1410;
-  --color-ink: #2a211c;
-  --color-muted: #6b5c52;
-  --color-rule: #d4c4b0;
+  --color-white: #ffffff;
+  --color-lavender: #f3eef8;
+  --color-lavender-deep: #e4daf0;
+  --color-plum: #5b3a6b;
+  --color-plum-dark: #3f274c;
+  --color-rose: #c99b9b;
+  --color-rose-soft: #e8d4d4;
+  --color-coral: #ff6b5b;
+  --color-coral-dark: #e85a4b;
+  --color-warm-gray: #6f6a66;
+  --color-warm-ink: #2e2a28;
+  --color-line: #ddd4e6;
 }
 
 html {
@@ -24,70 +24,23 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  color: var(--color-ink);
-  background: var(--color-ivory);
+  color: var(--color-warm-ink);
+  background: var(--color-white);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  line-height: 1.65;
-}
-
-h1,
-h2,
-h3,
-h4,
-.font-display {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
+  line-height: 1.6;
 }
 
 *:focus-visible {
-  outline: 1.5px solid var(--color-burgundy);
+  outline: 2px solid var(--color-coral);
   outline-offset: 3px;
-}
-
-.editorial-link {
-  position: relative;
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-burgundy);
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-.editorial-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0.35);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-
-.editorial-link:hover {
-  color: var(--color-terracotta);
-}
-
-.editorial-link:hover::after {
-  transform: scaleX(1);
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(28px);
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+    opacity 0.75s ease,
+    transform 0.75s ease;
 }
 
 .reveal.visible {
@@ -95,78 +48,39 @@ h4,
   transform: translateY(0);
 }
 
-.rule-grow {
-  transform-origin: left;
-  animation: rule-in 1s ease forwards;
+.bounce-arrow {
+  animation: bounce-y 1.6s ease-in-out infinite;
 }
 
-@keyframes rule-in {
-  from {
-    transform: scaleX(0);
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  to {
-    transform: scaleX(1);
+  50% {
+    transform: translateY(10px);
   }
 }
 
-.img-zoom {
-  overflow: hidden;
-}
-
-.img-zoom img {
-  transition: transform 0.9s ease;
-}
-
-.img-zoom:hover img {
-  transform: scale(1.04);
-}
-
-.focus-row {
-  transition: background-color 0.35s ease;
-}
-
-.focus-row:hover {
-  background-color: color-mix(in srgb, var(--color-beige) 55%, transparent);
-}
-
-.focus-row .focus-num {
-  transition: transform 0.35s ease, color 0.35s ease;
-}
-
-.focus-row:hover .focus-num {
-  transform: scale(1.12);
-  color: var(--color-terracotta);
-}
-
-.focus-row .focus-desc {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+.network-node {
   transition:
-    max-height 0.4s ease,
-    opacity 0.35s ease,
-    margin 0.35s ease;
+    transform 0.8s ease,
+    opacity 0.8s ease;
 }
 
-.focus-row:hover .focus-desc,
-.focus-row:focus-within .focus-desc {
-  max-height: 6rem;
-  opacity: 1;
-  margin-top: 0.75rem;
+.story-panel {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
 }
 
-.focus-row .focus-arrow {
-  opacity: 0;
-  transform: translateX(-6px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-.focus-row:hover .focus-arrow,
-.focus-row:focus-within .focus-arrow {
-  opacity: 1;
-  transform: translateX(0);
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,29 +89,13 @@ h4,
   }
 
   .reveal,
-  .rule-grow,
-  .img-zoom img,
-  .focus-row,
-  .focus-row .focus-num,
-  .focus-row .focus-desc,
-  .focus-row .focus-arrow,
-  .editorial-link::after {
+  .bounce-arrow,
+  .network-node {
     animation: none !important;
     transition: none !important;
   }
 
   .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-  .focus-row .focus-desc {
-    max-height: none;
-    opacity: 1;
-    margin-top: 0.75rem;
-  }
-
-  .focus-row .focus-arrow {
     opacity: 1;
     transform: none;
   }

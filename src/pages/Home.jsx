@@ -1,159 +1,115 @@
 import { Link } from 'react-router-dom'
-import Hero from '../components/Hero'
-import PullQuote from '../components/PullQuote'
-import SectionLabel from '../components/SectionLabel'
-import ImageCaption from '../components/ImageCaption'
-import { FocusList } from '../components/MembershipList'
-import PropertyFeature from '../components/PropertyFeature'
-import CTASection from '../components/CTASection'
-import ScrollReveal from '../components/ScrollReveal'
-import { focusAreas } from '../data/content'
-import { properties } from '../data/properties'
+import StorySection from '../components/StorySection'
+import StoryTransition from '../components/StoryTransition'
+import { DisconnectedNetwork } from '../components/NetworkDiagram'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+
+function BigStatement({ text, bg }) {
+  const { ref, visible } = useScrollReveal({ threshold: 0.4 })
+  return (
+    <div ref={ref} className={`story-panel ${bg}`}>
+      <div className={`mx-auto max-w-5xl px-5 md:px-8 reveal ${visible ? 'visible' : ''}`}>
+        <p className="text-5xl font-extrabold tracking-tight text-plum sm:text-6xl md:text-8xl">
+          {text}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
-  const desk = properties.slice(0, 3)
-
   return (
     <>
-      <Hero />
+      <section className="flex min-h-[88vh] flex-col justify-center bg-white">
+        <div className="mx-auto max-w-5xl px-5 py-20 md:px-8">
+          <p className="text-[11px] font-bold tracking-[0.22em] text-coral uppercase">
+            A Different Approach To Real Estate
+          </p>
+          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-plum sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+            WHAT IF REAL ESTATE STARTED WITH PEOPLE?
+          </h1>
+          <a
+            href="#idea"
+            className="mt-12 inline-flex flex-col items-start gap-3 text-sm font-extrabold tracking-[0.14em] text-plum uppercase"
+          >
+            Explore the story →
+            <span className="bounce-arrow text-3xl text-coral" aria-hidden="true">
+              ↓
+            </span>
+          </a>
+        </div>
+      </section>
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2 md:gap-16 md:px-8">
-          <ScrollReveal>
-            <SectionLabel>Feature</SectionLabel>
-            <h2 className="mt-4 font-display text-4xl text-espresso sm:text-5xl md:text-[3.25rem]">
-              More Than Property
-            </h2>
-            <p className="mt-6 font-display text-2xl leading-snug text-burgundy sm:text-3xl">
-              Real estate is ultimately about relationships.
+      <StorySection id="idea" label="01 — The Idea" className="bg-lavender">
+        <h2 className="max-w-3xl text-4xl font-extrabold tracking-tight text-plum sm:text-5xl md:text-6xl">
+          Real Estate Is More Than Buildings.
+        </h2>
+        <p className="mt-6 max-w-xl text-warm-gray">
+          The next chapter begins when people, relationships, and opportunity move together.
+        </p>
+      </StorySection>
+
+      <BigStatement text="IT'S PEOPLE." bg="bg-white" />
+      <BigStatement text="IT'S RELATIONSHIPS." bg="bg-lavender" />
+      <BigStatement text="IT'S OPPORTUNITY." bg="bg-rose-soft" />
+
+      <StorySection label="The Way We See It" className="bg-white">
+        <h2 className="max-w-3xl text-4xl font-extrabold text-plum sm:text-5xl">
+          Real estate can feel fragmented.
+        </h2>
+        <ul className="mt-8 max-w-xl space-y-3 text-lg text-warm-gray">
+          <li>People are disconnected.</li>
+          <li>Opportunities are difficult to discover.</li>
+          <li>Relationships are scattered.</li>
+          <li>Potential partnerships never happen.</li>
+        </ul>
+        <div className="mt-10">
+          <DisconnectedNetwork />
+        </div>
+        <p className="mt-8 text-2xl font-extrabold tracking-tight text-coral sm:text-3xl">
+          WE THINK THERE&apos;S A BETTER WAY.
+        </p>
+      </StorySection>
+
+      <StorySection id="mission" label="02 — The Mission" className="bg-plum text-white">
+        <h2 className="max-w-4xl text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          BUILD A NETWORK WHERE PEOPLE, PROPERTY, AND OPPORTUNITY CAN MEET.
+        </h2>
+        <p className="mt-8 max-w-2xl text-white/75">
+          KINDRED exists to gather people who care about real estate—and give relationships room to
+          become opportunities.
+        </p>
+        <div className="mt-14 grid gap-8 border-t border-white/20 pt-10 sm:grid-cols-3">
+          {['CONNECT', 'COLLABORATE', 'GROW'].map((p) => (
+            <p key={p} className="text-3xl font-extrabold tracking-tight text-coral sm:text-4xl">
+              {p}
             </p>
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <div className="space-y-5 text-sm leading-relaxed text-muted sm:text-base">
-              <p>
-                Ashlar is organized as a property house with the discipline of a journal: we present
-                opportunities carefully, convene people selectively, and treat introductions as craft.
-              </p>
-              <p>
-                Membership, partnerships, investments, and rentals are not separate products—they are
-                chapters of one long conversation about land, capital, and trust.
-              </p>
-              <p>
-                We believe strong real estate organizations endure through judgment, patience, and
-                relationships that outlast any single transaction.
-              </p>
-            </div>
-            <PullQuote>Buildings create spaces. Relationships create opportunities.</PullQuote>
-          </ScrollReveal>
+          ))}
         </div>
-      </section>
+      </StorySection>
 
-      <section className="border-y border-rule bg-parchment py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-5 text-center md:px-8">
-          <ScrollReveal>
-            <SectionLabel>02 / Our Mission</SectionLabel>
-            <h2 className="mt-6 font-display text-3xl leading-snug text-espresso sm:text-4xl md:text-5xl">
-              To build a connected real estate community where people, partnerships, and
-              opportunities can grow together.
-            </h2>
-            <div className="mx-auto mt-8 h-px w-24 bg-burgundy rule-grow" />
-            <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-              We exist to make those connections more intentional—less noise, more clarity, and a
-              network oriented toward the long term.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
+      <StorySection className="bg-lavender">
+        <p className="text-[11px] font-bold tracking-[0.2em] text-coral uppercase">
+          Continue The Story
+        </p>
+        <h2 className="mt-4 text-4xl font-extrabold text-plum sm:text-5xl">Meet the people.</h2>
+        <Link
+          to="/people"
+          className="mt-8 inline-block text-sm font-extrabold tracking-[0.14em] text-plum uppercase"
+        >
+          The People →
+        </Link>
+      </StorySection>
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 md:grid-cols-2 md:gap-14 md:px-8">
-          <ScrollReveal>
-            <div className="img-zoom">
-              <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80"
-                alt="City architecture representing Ashlar's long-term vision"
-                className="aspect-[4/5] w-full object-cover"
-              />
-            </div>
-            <ImageCaption caption="Urban fabric as study—scale, rhythm, and the patience of lasting work." />
-          </ScrollReveal>
-          <ScrollReveal delay={80}>
-            <SectionLabel>03 / Our Vision</SectionLabel>
-            <h2 className="mt-4 font-display text-3xl text-espresso sm:text-4xl md:text-5xl">
-              Building a recognized network around real estate.
-            </h2>
-            <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
-              Our long-term vision is to become a trusted house known for judgment: which
-              opportunities we present, whom we introduce, and how we cultivate collaboration across
-              owners, investors, professionals, and members.
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              Recognition, for us, means credibility—earned through consistency and care—not
-              spectacle.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="border-t border-rule py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <ScrollReveal>
-            <SectionLabel>04 / What We Do</SectionLabel>
-            <h2 className="mt-4 font-display text-3xl text-espresso sm:text-4xl">Areas Of Focus</h2>
-          </ScrollReveal>
-          <FocusList items={focusAreas} />
-        </div>
-      </section>
-
-      <section className="bg-parchment py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <ScrollReveal>
-            <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <SectionLabel>Property Desk</SectionLabel>
-                <h2 className="mt-3 font-display text-3xl text-espresso sm:text-4xl">
-                  From The Property Desk
-                </h2>
-              </div>
-              <Link to="/properties" className="editorial-link">
-                View The Index →
-              </Link>
-            </div>
-          </ScrollReveal>
-          <div className="space-y-12">
-            {desk.map((p, i) => (
-              <ScrollReveal key={p.id} delay={i * 60}>
-                <PropertyFeature property={p} large={i === 0} />
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
-          <ScrollReveal>
-            <SectionLabel>Partnerships</SectionLabel>
-            <h2 className="mt-4 font-display text-3xl text-espresso sm:text-4xl md:text-5xl">
-              Have Something Worth Building?
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-              We welcome conversations with people and organizations who see potential in real
-              estate.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3">
-              <Link to="/partners" className="editorial-link">
-                Become A Partner →
-              </Link>
-              <Link to="/contact" className="editorial-link">
-                Contact Us →
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <CTASection />
+      <StoryTransition
+        dark
+        title="THIS IS ONLY THE BEGINNING."
+        description="We're building a network one relationship at a time."
+        primaryTo="/get-involved"
+        primaryLabel="Get Involved →"
+        secondaryTo="/#idea"
+        secondaryLabel="Explore The Journey →"
+      />
     </>
   )
 }

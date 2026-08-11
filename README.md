@@ -1,10 +1,12 @@
-# ASHLAR — Real Estate Mockup #5
+# KINDRED — Real Estate Mockup #6
 
-Editorial real estate journal + property house website built with **React**, **Vite**, and **Tailwind CSS**. Deployed to **GitHub Pages** via **GitHub Actions** → `gh-pages` branch (Deploy from Branch).
+Story-first community network website: **React + Vite + Tailwind**, deployed via **GitHub Actions → gh-pages** (Deploy from Branch).
 
-## Brand
+## Concept
 
-Warm parchment palette, Cormorant Garamond + Source Sans 3, magazine layouts. Placeholder company: **ASHLAR**.
+Navigation: The Idea · The People · Opportunities · Get Involved · Start Here
+
+Journey: Idea → People → Mission → Opportunities → Community → Partners → Get Involved
 
 ## Local
 
@@ -13,11 +15,6 @@ npm install
 npm run dev
 ```
 
-## Pages
+## Live
 
-`/` `about` `membership` `join` `properties` `properties/:id` `partners` `contact`
-
-## GitHub Pages
-
-Settings → Pages → Deploy from a branch → `gh-pages` / root  
-URL: https://AstridBonoan.github.io/realestate-mock5.io/
+https://AstridBonoan.github.io/realestate-mock5.io/

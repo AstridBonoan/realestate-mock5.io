@@ -1,14 +1,16 @@
 import fs from 'fs'
+import path from 'path'
 
-const files = [
-  'src/data/properties.js',
-  'src/data/content.js',
-  'src/components/Hero.jsx',
-  'src/pages/Home.jsx',
-  'src/pages/Membership.jsx',
-  'src/pages/About.jsx',
-]
+function walk(dir, files = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) walk(full, files)
+    else if (/\.(jsx?|tsx?|js|css)$/.test(entry.name)) files.push(full)
+  }
+  return files
+}
 
+const files = walk('src')
 const urls = new Set()
 for (const f of files) {
   const t = fs.readFileSync(f, 'utf8')
@@ -34,3 +36,4 @@ for (const url of urls) {
   }
 }
 console.log(`RESULT ok=${ok} bad=${bad} total=${urls.size}`)
+if (bad > 0) process.exit(1)

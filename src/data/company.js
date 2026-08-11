@@ -1,15 +1,14 @@
 export const company = {
-  name: 'ASHLAR',
-  fullName: 'Ashlar Property House',
-  tagline: 'Real Estate. Relationships. Opportunity.',
+  name: 'KINDRED',
+  tagline: 'Real estate starts with people.',
   description:
-    'A growing organization connecting members, partners, properties, and opportunities through relationships built for the long term.',
-  email: 'hello@ashlarhouse.com',
-  phone: '(555) 014-2800',
-  location: 'Boston, MA',
-  hours: 'Monday–Friday, 9am–5:30pm ET',
+    'A community organization building relationships, opportunities, and partnerships across real estate.',
+  email: 'hello@kindrednetwork.com',
+  phone: '(555) 016-3400',
+  location: 'Newark, NJ',
   social: {
-    linkedin: 'https://linkedin.com',
     instagram: 'https://instagram.com',
+    linkedin: 'https://linkedin.com',
+    facebook: 'https://facebook.com',
   },
 }
