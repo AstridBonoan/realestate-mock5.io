@@ -21,36 +21,38 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-line bg-lavender">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:gap-14 md:px-8 md:py-28">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.16em] text-coral uppercase">
-              A different approach to real estate
-            </p>
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight text-plum sm:text-5xl md:text-[3.25rem] md:leading-[1.15]">
-              What if real estate started with people?
-            </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-warm-gray">
-              KINDRED is a professional community built around relationships, opportunity, and
-              long-term collaboration—not listings alone.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#idea" className="btn-primary">
-                Explore the story
-              </a>
-              <Link to="/get-involved" className="btn-secondary">
-                Get involved
-              </Link>
+        <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14 lg:py-16">
+          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+            <div className="flex flex-col justify-center self-center">
+              <p className="text-xs font-semibold tracking-[0.16em] text-coral uppercase">
+                A different approach to real estate
+              </p>
+              <h1 className="mt-4 text-4xl font-semibold tracking-tight text-plum sm:text-5xl md:text-[3.25rem] md:leading-[1.15]">
+                What if real estate started with people?
+              </h1>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-warm-gray">
+                KINDRED is a professional community built around relationships, opportunity, and
+                long-term collaboration—not listings alone.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#idea" className="btn-primary">
+                  Explore the story
+                </a>
+                <Link to="/get-involved" className="btn-secondary">
+                  Get involved
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80"
-              alt="Professionals collaborating in a modern workspace"
-              className="aspect-[4/5] w-full object-cover sm:aspect-[5/4] md:aspect-[4/5]"
-            />
-            <p className="mt-3 text-xs text-warm-gray">
-              The next chapter in real estate starts with people.
-            </p>
+            <figure className="self-center">
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80"
+                alt="Professionals collaborating in a modern workspace"
+                className="aspect-[4/5] w-full object-cover sm:aspect-[5/4] md:aspect-[4/5]"
+              />
+              <figcaption className="mt-3 text-xs text-warm-gray">
+                The next chapter in real estate starts with people.
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
