@@ -51,7 +51,7 @@ export default function ConversationForm() {
   if (done) {
     return (
       <div className="border border-line bg-lavender p-10 text-center">
-        <h3 className="text-3xl font-extrabold text-plum">Conversation Started</h3>
+        <h3 className="text-2xl font-semibold text-plum">Conversation started</h3>
         <p className="mt-3 text-sm text-warm-gray">
           Thank you — this is a mockup confirmation. No message was sent to a server.
         </p>
@@ -189,9 +189,9 @@ export default function ConversationForm() {
 
         <button
           type="submit"
-          className="text-[11px] font-extrabold tracking-[0.16em] text-coral uppercase"
+          className="btn-primary"
         >
-          Start Conversation
+          Start conversation
         </button>
       </form>
     </div>

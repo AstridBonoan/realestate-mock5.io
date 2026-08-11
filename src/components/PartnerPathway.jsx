@@ -2,20 +2,19 @@ import { Link } from 'react-router-dom'
 
 export default function PartnerPathway({ item }) {
   return (
-    <section className="border-t border-line py-12 first:border-t-0 md:py-16">
-      <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
-        <p className="text-4xl font-extrabold text-coral md:text-5xl">{item.number}</p>
+    <section className="border-t border-line py-10 first:border-t-0 md:py-12">
+      <div className="grid gap-5 md:grid-cols-[5rem_1fr] md:gap-8">
+        <p className="text-2xl font-semibold text-coral md:text-3xl">{item.number}</p>
         <div>
-          <h2 className="text-2xl font-extrabold tracking-tight text-plum sm:text-3xl">
+          <h2 className="text-xl font-semibold tracking-tight text-plum sm:text-2xl">
             {item.title}
           </h2>
-          <p className="mt-3 max-w-2xl text-warm-gray">{item.description}</p>
-          <p className="mt-4 text-sm italic text-rose">{item.example}</p>
-          <Link
-            to="/partner-with-us"
-            className="mt-6 inline-block text-[11px] font-extrabold tracking-[0.16em] text-coral uppercase"
-          >
-            Start A Conversation →
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-warm-gray">
+            {item.description}
+          </p>
+          <p className="mt-3 text-sm text-rose italic">{item.example}</p>
+          <Link to="/partner-with-us" className="text-link mt-5 inline-block">
+            Start a conversation →
           </Link>
         </div>
       </div>

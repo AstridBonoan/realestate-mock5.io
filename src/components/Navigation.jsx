@@ -41,10 +41,7 @@ export default function Navigation() {
       return
     }
     navigate('/')
-    // Ensure top after route/hash clears
-    requestAnimationFrame(() => {
-      scrollToTop()
-    })
+    requestAnimationFrame(() => scrollToTop())
     setTimeout(scrollToTop, 50)
   }
 
@@ -58,12 +55,12 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur-sm">
         <div className="relative z-50 mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
           <Link
             to="/"
             onClick={goHome}
-            className="text-lg font-extrabold tracking-tight text-plum"
+            className="text-[15px] font-bold tracking-[0.08em] text-plum uppercase"
           >
             {company.name}
           </Link>
@@ -75,7 +72,7 @@ export default function Navigation() {
                   key={l.label}
                   to={l.to}
                   onClick={handleIdea}
-                  className="text-[11px] font-bold tracking-[0.16em] text-warm-gray uppercase transition hover:text-plum"
+                  className="text-[13px] font-medium text-warm-gray transition hover:text-plum"
                 >
                   {l.label}
                 </Link>
@@ -84,8 +81,8 @@ export default function Navigation() {
                   key={l.label}
                   to={l.to}
                   className={({ isActive }) =>
-                    `text-[11px] font-bold tracking-[0.16em] uppercase transition ${
-                      isActive ? 'text-coral' : 'text-warm-gray hover:text-plum'
+                    `text-[13px] font-medium transition ${
+                      isActive ? 'text-plum' : 'text-warm-gray hover:text-plum'
                     }`
                   }
                 >
@@ -96,15 +93,12 @@ export default function Navigation() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              to="/get-involved"
-              className="hidden text-[11px] font-extrabold tracking-[0.18em] text-plum uppercase transition hover:text-coral sm:inline"
-            >
+            <Link to="/get-involved" className="btn-primary hidden !py-2.5 !px-4 sm:inline-flex">
               Start Here
             </Link>
             <button
               type="button"
-              className="relative z-[60] border border-line px-3 py-2 text-[11px] font-bold tracking-[0.14em] text-plum uppercase lg:hidden"
+              className="relative z-[60] border border-line px-3 py-2 text-[12px] font-semibold text-plum lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((v) => !v)}
@@ -117,37 +111,33 @@ export default function Navigation() {
 
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-[55] bg-plum text-white transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[55] bg-white transition-transform duration-300 lg:hidden ${
           open
             ? 'pointer-events-auto translate-y-0'
             : 'pointer-events-none -translate-y-full'
         }`}
         aria-hidden={!open}
       >
-        <div className="flex h-full flex-col justify-between px-6 py-8">
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={goHome}
-              className="text-lg font-extrabold text-white"
-            >
+        <div className="flex h-full flex-col px-6 py-8">
+          <div className="mb-12 flex items-center justify-between border-b border-line pb-6">
+            <button type="button" onClick={goHome} className="font-bold tracking-[0.08em] text-plum uppercase">
               {company.name}
             </button>
             <button
               type="button"
-              className="border border-white/30 px-3 py-2 text-[11px] font-bold tracking-[0.14em] uppercase"
+              className="border border-line px-3 py-2 text-[12px] font-semibold text-plum"
               onClick={closeMenu}
             >
               Close
             </button>
           </div>
-          <nav className="flex flex-col gap-6" aria-label="Mobile">
+          <nav className="flex flex-col gap-1" aria-label="Mobile">
             {links.map((l) => (
               <Link
                 key={l.label}
                 to={l.to}
                 onClick={l.hash ? handleIdea : closeMenu}
-                className="text-4xl font-extrabold tracking-tight"
+                className="border-b border-line py-5 text-2xl font-semibold text-plum"
               >
                 {l.label}
               </Link>
@@ -155,12 +145,11 @@ export default function Navigation() {
             <Link
               to="/get-involved"
               onClick={closeMenu}
-              className="mt-4 text-2xl font-bold text-coral"
+              className="btn-primary mt-8 self-start"
             >
-              Start Here →
+              Start Here
             </Link>
           </nav>
-          <p className="text-sm text-white/60">{company.tagline}</p>
         </div>
       </div>
     </>

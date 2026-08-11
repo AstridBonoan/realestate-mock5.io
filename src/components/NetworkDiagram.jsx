@@ -16,9 +16,9 @@ export default function NetworkDiagram() {
   return (
     <div
       ref={ref}
-      className="relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-[40%] bg-lavender"
+      className="relative mx-auto aspect-square w-full max-w-md border border-line bg-white"
       role="img"
-      aria-label="Network map connecting members, investors, owners, developers, professionals, businesses, and partners"
+      aria-label="Network map connecting community roles"
     >
       <svg viewBox="0 0 100 100" className="h-full w-full">
         {positions.map((p, i) => (
@@ -28,24 +28,20 @@ export default function NetworkDiagram() {
             y1="50"
             x2={p.x}
             y2={p.y}
-            stroke="#C99B9B"
-            strokeWidth="0.4"
-            className="network-node"
-            style={{
-              opacity: inView ? 1 : 0.15,
-              transitionDelay: `${i * 80}ms`,
-            }}
+            stroke="#E5E1E9"
+            strokeWidth="0.5"
+            style={{ opacity: inView ? 1 : 0.2, transitionDelay: `${i * 80}ms` }}
           />
         ))}
-        <circle cx="50" cy="50" r="10" fill="#5B3A6B" />
+        <circle cx="50" cy="50" r="9" fill="#3A2F45" />
         <text
           x="50"
           y="51.5"
           textAnchor="middle"
           fill="#fff"
-          fontSize="3.2"
-          fontWeight="800"
-          fontFamily="Plus Jakarta Sans, sans-serif"
+          fontSize="3"
+          fontWeight="700"
+          fontFamily="Manrope, sans-serif"
         >
           KINDRED
         </text>
@@ -54,21 +50,19 @@ export default function NetworkDiagram() {
             key={communityTypes[i]}
             className="network-node"
             style={{
-              transform: inView ? 'scale(1)' : 'scale(0.7)',
-              transformOrigin: `${p.x}px ${p.y}px`,
-              opacity: inView ? 1 : 0.3,
-              transitionDelay: `${120 + i * 90}ms`,
+              opacity: inView ? 1 : 0.35,
+              transitionDelay: `${100 + i * 80}ms`,
             }}
           >
-            <circle cx={p.x} cy={p.y} r="7.5" fill="#fff" stroke="#FF6B5B" strokeWidth="0.5" />
+            <circle cx={p.x} cy={p.y} r="7" fill="#F6F5F8" stroke="#8F4E5C" strokeWidth="0.4" />
             <text
               x={p.x}
               y={p.y + 1}
               textAnchor="middle"
-              fill="#5B3A6B"
-              fontSize="2.3"
-              fontWeight="700"
-              fontFamily="Plus Jakarta Sans, sans-serif"
+              fill="#3A2F45"
+              fontSize="2.2"
+              fontWeight="600"
+              fontFamily="Manrope, sans-serif"
             >
               {communityTypes[i].split(' ')[0].slice(0, 8)}
             </text>
@@ -97,15 +91,19 @@ export function DisconnectedNetwork() {
   ]
 
   return (
-    <div ref={ref} className="mx-auto h-56 w-full max-w-md sm:h-64" aria-hidden="true">
+    <div
+      ref={ref}
+      className="mx-auto h-56 w-full max-w-md border border-line bg-lavender sm:h-64"
+      aria-hidden="true"
+    >
       <svg viewBox="0 0 100 100" className="h-full w-full">
         {(inView ? tight : loose).map((p, i) => (
           <circle
             key={i}
             cx={p.x}
             cy={p.y}
-            r="5"
-            fill={i === 4 ? '#FF6B5B' : '#5B3A6B'}
+            r="4.5"
+            fill={i === 4 ? '#8F4E5C' : '#3A2F45'}
             className="network-node"
             style={{ transitionDelay: `${i * 100}ms` }}
           />
@@ -119,7 +117,7 @@ export function DisconnectedNetwork() {
                 y1={p.y}
                 x2={tight[i + 1].x}
                 y2={tight[i + 1].y}
-                stroke="#C99B9B"
+                stroke="#9A7B84"
                 strokeWidth="0.5"
               />
             ) : null,

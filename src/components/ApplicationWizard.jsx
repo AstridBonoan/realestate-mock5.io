@@ -71,8 +71,8 @@ export default function ApplicationWizard() {
   if (done) {
     return (
       <div className="py-16 text-center">
-        <p className="text-[11px] font-bold tracking-[0.2em] text-coral uppercase">Received</p>
-        <h2 className="mt-4 text-5xl font-extrabold text-plum">THANK YOU.</h2>
+        <p className="text-xs font-semibold tracking-[0.12em] text-coral uppercase">Received</p>
+        <h2 className="mt-4 text-3xl font-semibold text-plum">Thank you.</h2>
         <p className="mt-4 text-warm-gray">Your application has been received.</p>
         <p className="mt-2 text-xs text-warm-gray">
           Mockup confirmation — no backend submission occurred.
@@ -98,7 +98,7 @@ export default function ApplicationWizard() {
       <div className="mt-10">
         {step === 1 && (
           <div className="space-y-6">
-            <h2 className="text-3xl font-extrabold text-plum">Tell Us About Yourself</h2>
+            <h2 className="text-2xl font-semibold text-plum">Tell us about yourself</h2>
             {[
               ['name', 'Name'],
               ['email', 'Email'],
@@ -229,9 +229,9 @@ export default function ApplicationWizard() {
         <button
           type="button"
           onClick={nextStep}
-          className="text-[11px] font-extrabold tracking-[0.16em] text-coral uppercase"
+          className="btn-primary"
         >
-          {step === 5 ? 'Submit Application' : 'Continue →'}
+          {step === 5 ? 'Submit application' : 'Continue'}
         </button>
       </div>
     </div>

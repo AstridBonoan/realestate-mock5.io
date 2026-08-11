@@ -5,85 +5,90 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-lavender">
       <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
-        <p className="text-3xl font-extrabold tracking-tight text-plum sm:text-4xl">
-          {company.name}
-        </p>
-        <p className="mt-3 max-w-md text-lg font-medium text-warm-gray">
-          {company.tagline}
-        </p>
-
-        <div className="mt-12 grid gap-10 sm:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <h2 className="text-[11px] font-bold tracking-[0.18em] text-plum uppercase">
+            <p className="text-sm font-bold tracking-[0.08em] text-plum uppercase">
+              {company.name}
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-warm-gray">
+              {company.tagline} A professional community connecting people, property, and
+              opportunity.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xs font-semibold tracking-[0.12em] text-plum uppercase">
               Explore
             </h2>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-sm text-warm-gray">
               <li>
-                <Link to="/#idea" className="hover:text-coral">
+                <Link to="/#idea" className="hover:text-plum">
                   The Idea
                 </Link>
               </li>
               <li>
-                <Link to="/people" className="hover:text-coral">
+                <Link to="/people" className="hover:text-plum">
                   The People
                 </Link>
               </li>
               <li>
-                <Link to="/opportunities" className="hover:text-coral">
+                <Link to="/opportunities" className="hover:text-plum">
                   Opportunities
                 </Link>
               </li>
               <li>
-                <Link to="/journal" className="hover:text-coral">
+                <Link to="/journal" className="hover:text-plum">
                   Journal
                 </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h2 className="text-[11px] font-bold tracking-[0.18em] text-plum uppercase">
+            <h2 className="text-xs font-semibold tracking-[0.12em] text-plum uppercase">
               Get Involved
             </h2>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-sm text-warm-gray">
               <li>
-                <Link to="/community" className="hover:text-coral">
+                <Link to="/community" className="hover:text-plum">
                   Community
                 </Link>
               </li>
               <li>
-                <Link to="/partners" className="hover:text-coral">
+                <Link to="/partners" className="hover:text-plum">
                   Partners
                 </Link>
               </li>
               <li>
-                <Link to="/apply" className="hover:text-coral">
+                <Link to="/apply" className="hover:text-plum">
                   Apply
                 </Link>
               </li>
               <li>
-                <Link to="/conversation" className="hover:text-coral">
-                  Start A Conversation
+                <Link to="/conversation" className="hover:text-plum">
+                  Conversation
                 </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h2 className="text-[11px] font-bold tracking-[0.18em] text-plum uppercase">
+            <h2 className="text-xs font-semibold tracking-[0.12em] text-plum uppercase">
               Follow
             </h2>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-sm text-warm-gray">
               <li>
-                <a href={company.social.instagram} target="_blank" rel="noreferrer" className="hover:text-coral">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href={company.social.linkedin} target="_blank" rel="noreferrer" className="hover:text-coral">
+                <a href={company.social.linkedin} target="_blank" rel="noreferrer" className="hover:text-plum">
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href={company.social.facebook} target="_blank" rel="noreferrer" className="hover:text-coral">
+                <a href={company.social.instagram} target="_blank" rel="noreferrer" className="hover:text-plum">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href={company.social.facebook} target="_blank" rel="noreferrer" className="hover:text-plum">
                   Facebook
                 </a>
               </li>

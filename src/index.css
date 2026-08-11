@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
 
   --color-white: #ffffff;
-  --color-lavender: #f3eef8;
-  --color-lavender-deep: #e4daf0;
-  --color-plum: #5b3a6b;
-  --color-plum-dark: #3f274c;
-  --color-rose: #c99b9b;
-  --color-rose-soft: #e8d4d4;
-  --color-coral: #ff6b5b;
-  --color-coral-dark: #e85a4b;
-  --color-warm-gray: #6f6a66;
-  --color-warm-ink: #2e2a28;
-  --color-line: #ddd4e6;
+  --color-lavender: #f6f5f8;
+  --color-lavender-deep: #ebe8f0;
+  --color-plum: #3a2f45;
+  --color-plum-dark: #2a2233;
+  --color-rose: #9a7b84;
+  --color-rose-soft: #f0eaec;
+  --color-coral: #8f4e5c;
+  --color-coral-dark: #7a3f4c;
+  --color-warm-gray: #6b6670;
+  --color-warm-ink: #2f2b33;
+  --color-line: #e5e1e9;
 }
 
 html {
@@ -27,7 +27,8 @@ body {
   color: var(--color-warm-ink);
   background: var(--color-white);
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 *:focus-visible {
@@ -37,29 +38,15 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(18px);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s ease;
+    opacity 0.65s ease,
+    transform 0.65s ease;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.bounce-arrow {
-  animation: bounce-y 1.6s ease-in-out infinite;
-}
-
-@keyframes bounce-y {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
 }
 
 .network-node {
@@ -69,9 +56,63 @@ body {
 }
 
 .story-panel {
-  min-height: 85vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  background: var(--color-plum);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-plum-dark);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-plum);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-plum);
+  background: var(--color-lavender);
+}
+
+.text-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-coral);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: var(--color-plum);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -89,7 +130,6 @@ body {
   }
 
   .reveal,
-  .bounce-arrow,
   .network-node {
     animation: none !important;
     transition: none !important;
