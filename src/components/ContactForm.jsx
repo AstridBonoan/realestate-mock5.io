@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
 
 const inquiryTypes = [
-  'General Inquiry',
+  'General',
   'Membership',
   'Investment',
   'Rental',
@@ -12,18 +11,19 @@ const inquiryTypes = [
   'Other',
 ]
 
-const initial = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  inquiryType: '',
-  subject: '',
-  message: '',
-}
+const fieldClass =
+  'w-full border-0 border-b border-rule bg-transparent px-0 py-3 text-sm text-espresso outline-none transition focus:border-burgundy'
 
 export default function ContactForm() {
-  const [form, setForm] = useState(initial)
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    inquiryType: '',
+    subject: '',
+    message: '',
+  })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -49,83 +49,82 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-[2rem] border border-sage bg-sage-soft/40 p-8 text-center">
-        <CheckCircle2 className="mx-auto text-emerald" size={40} />
-        <h3 className="mt-4 font-display text-2xl font-bold text-charcoal">Message Sent</h3>
-        <p className="mx-auto mt-3 max-w-md text-sm text-muted">
-          Thank you for reaching out. This is a mockup confirmation — no backend message was sent.
-          Replace with your live contact workflow when ready.
+      <div className="border border-rule bg-parchment px-6 py-12 text-center">
+        <p className="text-[11px] font-semibold tracking-[0.2em] text-burgundy uppercase">
+          Confirmed
+        </p>
+        <h3 className="mt-3 font-display text-3xl text-espresso">Message Received</h3>
+        <p className="mx-auto mt-4 max-w-md text-sm text-muted">
+          Thank you for writing. This is a mockup confirmation—no message was transmitted to a
+          server.
         </p>
       </div>
     )
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      className="space-y-4 rounded-[2rem] border border-border bg-white p-5 shadow-card sm:p-8"
-    >
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block" htmlFor="c-firstName">
-          <span className="mb-1.5 block text-sm font-medium">First Name</span>
+    <form onSubmit={onSubmit} noValidate className="space-y-7">
+      <div className="grid gap-7 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            First Name
+          </span>
           <input
-            id="c-firstName"
+            className={fieldClass}
             value={form.firstName}
             onChange={(e) => update('firstName', e.target.value)}
-            className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
-            autoComplete="given-name"
           />
-          {errors.firstName && <span className="mt-1 block text-xs text-red-600">{errors.firstName}</span>}
+          {errors.firstName && <span className="mt-1 block text-xs text-sienna">{errors.firstName}</span>}
         </label>
-        <label className="block" htmlFor="c-lastName">
-          <span className="mb-1.5 block text-sm font-medium">Last Name</span>
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Last Name
+          </span>
           <input
-            id="c-lastName"
+            className={fieldClass}
             value={form.lastName}
             onChange={(e) => update('lastName', e.target.value)}
-            className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
-            autoComplete="family-name"
           />
-          {errors.lastName && <span className="mt-1 block text-xs text-red-600">{errors.lastName}</span>}
+          {errors.lastName && <span className="mt-1 block text-xs text-sienna">{errors.lastName}</span>}
         </label>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block" htmlFor="c-email">
-          <span className="mb-1.5 block text-sm font-medium">Email</span>
+      <div className="grid gap-7 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Email
+          </span>
           <input
-            id="c-email"
             type="email"
+            className={fieldClass}
             value={form.email}
             onChange={(e) => update('email', e.target.value)}
-            className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
-            autoComplete="email"
           />
-          {errors.email && <span className="mt-1 block text-xs text-red-600">{errors.email}</span>}
+          {errors.email && <span className="mt-1 block text-xs text-sienna">{errors.email}</span>}
         </label>
-        <label className="block" htmlFor="c-phone">
-          <span className="mb-1.5 block text-sm font-medium">Phone</span>
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Phone
+          </span>
           <input
-            id="c-phone"
             type="tel"
+            className={fieldClass}
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
-            className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
-            autoComplete="tel"
           />
         </label>
       </div>
 
-      <label className="block" htmlFor="c-inquiry">
-        <span className="mb-1.5 block text-sm font-medium">Inquiry Type</span>
+      <label className="block">
+        <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+          Inquiry Type
+        </span>
         <select
-          id="c-inquiry"
+          className={fieldClass}
           value={form.inquiryType}
           onChange={(e) => update('inquiryType', e.target.value)}
-          className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
         >
-          <option value="">Select an option</option>
+          <option value="">Select</option>
           {inquiryTypes.map((t) => (
             <option key={t} value={t}>
               {t}
@@ -133,37 +132,37 @@ export default function ContactForm() {
           ))}
         </select>
         {errors.inquiryType && (
-          <span className="mt-1 block text-xs text-red-600">{errors.inquiryType}</span>
+          <span className="mt-1 block text-xs text-sienna">{errors.inquiryType}</span>
         )}
       </label>
 
-      <label className="block" htmlFor="c-subject">
-        <span className="mb-1.5 block text-sm font-medium">Subject</span>
+      <label className="block">
+        <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+          Subject
+        </span>
         <input
-          id="c-subject"
+          className={fieldClass}
           value={form.subject}
           onChange={(e) => update('subject', e.target.value)}
-          className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
         />
-        {errors.subject && <span className="mt-1 block text-xs text-red-600">{errors.subject}</span>}
+        {errors.subject && <span className="mt-1 block text-xs text-sienna">{errors.subject}</span>}
       </label>
 
-      <label className="block" htmlFor="c-message">
-        <span className="mb-1.5 block text-sm font-medium">Message</span>
+      <label className="block">
+        <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+          Message
+        </span>
         <textarea
-          id="c-message"
+          rows={5}
+          className={`${fieldClass} resize-y`}
           value={form.message}
           onChange={(e) => update('message', e.target.value)}
-          className="min-h-[140px] w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none focus:border-emerald focus:bg-white"
         />
-        {errors.message && <span className="mt-1 block text-xs text-red-600">{errors.message}</span>}
+        {errors.message && <span className="mt-1 block text-xs text-sienna">{errors.message}</span>}
       </label>
 
-      <button
-        type="submit"
-        className="w-full rounded-full bg-emerald px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-dark"
-      >
-        Send Message
+      <button type="submit" className="editorial-link border-0 bg-transparent p-0">
+        Send Message →
       </button>
     </form>
   )

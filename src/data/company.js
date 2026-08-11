@@ -1,22 +1,15 @@
 export const company = {
-  name: 'AETHER',
-  tagline: 'Real Estate, Reimagined.',
+  name: 'ASHLAR',
+  fullName: 'Ashlar Property House',
+  tagline: 'Real Estate. Relationships. Opportunity.',
   description:
-    'A modern real estate network connecting members, partners, properties, and opportunities.',
-  email: 'hello@aethernetwork.com',
-  phone: '(555) 010-2400',
-  location: 'New York, NY',
-  hours: 'Mon–Fri, 9am–6pm ET',
+    'A growing organization connecting members, partners, properties, and opportunities through relationships built for the long term.',
+  email: 'hello@ashlarhouse.com',
+  phone: '(555) 014-2800',
+  location: 'Boston, MA',
+  hours: 'Monday–Friday, 9am–5:30pm ET',
   social: {
     linkedin: 'https://linkedin.com',
-    twitter: 'https://x.com',
     instagram: 'https://instagram.com',
   },
 }
-
-export const stats = [
-  { value: 500, suffix: '+', label: 'Members', note: 'Placeholder' },
-  { value: 50, suffix: '+', label: 'Partners', note: 'Placeholder' },
-  { value: 25, suffix: '+', label: 'Properties', note: 'Placeholder' },
-  { value: 15, suffix: '+', label: 'Opportunities', note: 'Placeholder' },
-]

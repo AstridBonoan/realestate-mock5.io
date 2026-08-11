@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
 
 const initial = {
   firstName: '',
@@ -11,11 +10,14 @@ const initial = {
   occupation: '',
   experience: '',
   interests: '',
-  goals: '',
+  why: '',
   referral: '',
   additional: '',
   agree: false,
 }
+
+const fieldClass =
+  'w-full border-0 border-b border-rule bg-transparent px-0 py-3 text-sm text-espresso outline-none transition focus:border-burgundy'
 
 export default function MembershipForm() {
   const [form, setForm] = useState(initial)
@@ -30,8 +32,7 @@ export default function MembershipForm() {
     if (!form.lastName.trim()) next.lastName = 'Required'
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = 'Valid email required'
     if (!form.phone.trim()) next.phone = 'Required'
-    if (!form.city.trim()) next.city = 'Required'
-    if (!form.state.trim()) next.state = 'Required'
+    if (!form.why.trim()) next.why = 'Required'
     if (!form.agree) next.agree = 'Please agree to be contacted'
     setErrors(next)
     return Object.keys(next).length === 0
@@ -45,82 +46,145 @@ export default function MembershipForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-[2rem] border border-sage bg-sage-soft/40 p-8 text-center shadow-soft">
-        <CheckCircle2 className="mx-auto text-emerald" size={40} />
-        <h3 className="mt-4 font-display text-2xl font-bold text-charcoal">
-          Application Submitted
-        </h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-          Thank you for your interest. Our team will review your application and contact you
-          regarding next steps.
+      <div className="border border-rule bg-parchment px-6 py-12 text-center">
+        <p className="text-[11px] font-semibold tracking-[0.2em] text-burgundy uppercase">
+          Received
+        </p>
+        <h3 className="mt-3 font-display text-3xl text-espresso">Application Submitted</h3>
+        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted">
+          Thank you for your interest in Ashlar. Our team will review your application and be in
+          touch regarding next steps. This is a mockup confirmation—no backend submission occurred.
         </p>
       </div>
     )
   }
 
-  const field = (id, label, props = {}) => (
-    <label className="block" htmlFor={id}>
-      <span className="mb-1.5 block text-sm font-medium text-ink">{label}</span>
-      {props.type === 'textarea' ? (
-        <textarea
-          id={id}
-          value={form[id]}
-          onChange={(e) => update(id, e.target.value)}
-          className="min-h-[96px] w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none transition focus:border-emerald focus:bg-white"
-          {...props}
-          type={undefined}
-        />
-      ) : (
-        <input
-          id={id}
-          value={form[id]}
-          onChange={(e) => update(id, e.target.value)}
-          className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-sm outline-none transition focus:border-emerald focus:bg-white"
-          {...props}
-        />
-      )}
-      {errors[id] && <span className="mt-1 block text-xs text-red-600">{errors[id]}</span>}
-    </label>
-  )
-
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-4 rounded-[2rem] border border-border bg-white p-5 shadow-card sm:p-8">
-      <div className="grid gap-4 sm:grid-cols-2">
-        {field('firstName', 'First Name', { autoComplete: 'given-name' })}
-        {field('lastName', 'Last Name', { autoComplete: 'family-name' })}
+    <form onSubmit={onSubmit} noValidate className="space-y-8">
+      <div className="grid gap-8 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            First Name
+          </span>
+          <input
+            className={fieldClass}
+            value={form.firstName}
+            onChange={(e) => update('firstName', e.target.value)}
+            autoComplete="given-name"
+          />
+          {errors.firstName && <span className="mt-1 block text-xs text-sienna">{errors.firstName}</span>}
+        </label>
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Last Name
+          </span>
+          <input
+            className={fieldClass}
+            value={form.lastName}
+            onChange={(e) => update('lastName', e.target.value)}
+            autoComplete="family-name"
+          />
+          {errors.lastName && <span className="mt-1 block text-xs text-sienna">{errors.lastName}</span>}
+        </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {field('email', 'Email', { type: 'email', autoComplete: 'email' })}
-        {field('phone', 'Phone', { type: 'tel', autoComplete: 'tel' })}
-      </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {field('city', 'City', { autoComplete: 'address-level2' })}
-        {field('state', 'State', { autoComplete: 'address-level1' })}
-      </div>
-      {field('occupation', 'Occupation')}
-      {field('experience', 'Real Estate Experience', { type: 'textarea' })}
-      {field('interests', 'Areas of Interest', { type: 'textarea' })}
-      {field('goals', 'What are you hoping to gain from membership?', { type: 'textarea' })}
-      {field('referral', 'How did you hear about us?')}
-      {field('additional', 'Additional Information', { type: 'textarea' })}
 
-      <label className="flex items-start gap-3 text-sm text-ink" htmlFor="agree">
+      <div className="grid gap-8 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Email
+          </span>
+          <input
+            type="email"
+            className={fieldClass}
+            value={form.email}
+            onChange={(e) => update('email', e.target.value)}
+            autoComplete="email"
+          />
+          {errors.email && <span className="mt-1 block text-xs text-sienna">{errors.email}</span>}
+        </label>
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            Phone
+          </span>
+          <input
+            type="tel"
+            className={fieldClass}
+            value={form.phone}
+            onChange={(e) => update('phone', e.target.value)}
+            autoComplete="tel"
+          />
+          {errors.phone && <span className="mt-1 block text-xs text-sienna">{errors.phone}</span>}
+        </label>
+      </div>
+
+      <div className="grid gap-8 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            City
+          </span>
+          <input
+            className={fieldClass}
+            value={form.city}
+            onChange={(e) => update('city', e.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            State
+          </span>
+          <input
+            className={fieldClass}
+            value={form.state}
+            onChange={(e) => update('state', e.target.value)}
+          />
+        </label>
+      </div>
+
+      <label className="block">
+        <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+          Occupation
+        </span>
         <input
-          id="agree"
+          className={fieldClass}
+          value={form.occupation}
+          onChange={(e) => update('occupation', e.target.value)}
+        />
+      </label>
+
+      {[
+        ['experience', 'Real Estate Experience'],
+        ['interests', 'Areas of Interest'],
+        ['why', 'Why would you like to become a member?'],
+        ['referral', 'How did you hear about us?'],
+        ['additional', 'Additional Information'],
+      ].map(([key, label]) => (
+        <label key={key} className="block">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+            {label}
+          </span>
+          <textarea
+            rows={3}
+            className={`${fieldClass} resize-y`}
+            value={form[key]}
+            onChange={(e) => update(key, e.target.value)}
+          />
+          {errors[key] && <span className="mt-1 block text-xs text-sienna">{errors[key]}</span>}
+        </label>
+      ))}
+
+      <label className="flex items-start gap-3 text-sm text-ink">
+        <input
           type="checkbox"
           checked={form.agree}
           onChange={(e) => update('agree', e.target.checked)}
-          className="mt-1 h-4 w-4 rounded border-border text-emerald focus:ring-emerald"
+          className="mt-1 accent-burgundy"
         />
-        <span>I agree to be contacted regarding my membership application.</span>
+        <span>I agree to be contacted regarding my application.</span>
       </label>
-      {errors.agree && <span className="block text-xs text-red-600">{errors.agree}</span>}
+      {errors.agree && <span className="block text-xs text-sienna">{errors.agree}</span>}
 
-      <button
-        type="submit"
-        className="w-full rounded-full bg-emerald px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-dark active:scale-[0.99]"
-      >
-        Submit Application
+      <button type="submit" className="editorial-link border-0 bg-transparent p-0">
+        Submit Application →
       </button>
     </form>
   )

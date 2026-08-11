@@ -1,73 +1,68 @@
-import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
+import SectionLabel from '../components/SectionLabel'
 import ScrollReveal from '../components/ScrollReveal'
 import { company } from '../data/company'
 
 export default function Contact() {
   return (
-    <>
-      <section className="bg-cream py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[0.18em] text-emerald uppercase">Contact</p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-charcoal sm:text-5xl">
-            Let&apos;s Connect.
+    <section className="py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <ScrollReveal>
+          <SectionLabel>Contact</SectionLabel>
+          <h1 className="mt-4 font-display text-4xl text-espresso sm:text-5xl md:text-6xl">
+            Let&apos;s Talk.
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-muted sm:text-lg">
-            Have a question, property, opportunity, or partnership idea? We&apos;d like to hear from
-            you.
-          </p>
-        </div>
-      </section>
+        </ScrollReveal>
 
-      <section className="bg-white py-12 sm:py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+        <div className="mt-12 grid gap-14 md:grid-cols-2 md:gap-16">
           <ScrollReveal>
-            <div className="rounded-[2rem] border border-border bg-surface p-6 sm:p-8">
-              <h2 className="font-display text-2xl font-bold text-charcoal">Contact Information</h2>
-              <ul className="mt-6 space-y-5 text-sm">
-                <li className="flex gap-3">
-                  <Mail className="mt-0.5 text-emerald" size={18} />
-                  <div>
-                    <p className="font-medium text-charcoal">Email</p>
-                    <a href={`mailto:${company.email}`} className="text-muted hover:text-emerald">
-                      {company.email}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <Phone className="mt-0.5 text-emerald" size={18} />
-                  <div>
-                    <p className="font-medium text-charcoal">Phone</p>
-                    <a
-                      href={`tel:${company.phone.replace(/\D/g, '')}`}
-                      className="text-muted hover:text-emerald"
-                    >
-                      {company.phone}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <MapPin className="mt-0.5 text-emerald" size={18} />
-                  <div>
-                    <p className="font-medium text-charcoal">Location</p>
-                    <p className="text-muted">{company.location}</p>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <Clock className="mt-0.5 text-emerald" size={18} />
-                  <div>
-                    <p className="font-medium text-charcoal">Business Hours</p>
-                    <p className="text-muted">{company.hours}</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <p className="max-w-md font-display text-2xl leading-snug text-espresso sm:text-3xl">
+              Have a property, partnership, membership question, or opportunity to discuss?
+            </p>
+            <dl className="mt-10 space-y-6 text-sm">
+              <div>
+                <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">
+                  Email
+                </dt>
+                <dd className="mt-1">
+                  <a href={`mailto:${company.email}`} className="text-espresso hover:text-burgundy">
+                    {company.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">
+                  Phone
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={`tel:${company.phone.replace(/\D/g, '')}`}
+                    className="text-espresso hover:text-burgundy"
+                  >
+                    {company.phone}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">
+                  Location
+                </dt>
+                <dd className="mt-1 text-espresso">{company.location}</dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">
+                  Hours
+                </dt>
+                <dd className="mt-1 text-espresso">{company.hours}</dd>
+              </div>
+            </dl>
           </ScrollReveal>
+
           <ScrollReveal delay={80}>
             <ContactForm />
           </ScrollReveal>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

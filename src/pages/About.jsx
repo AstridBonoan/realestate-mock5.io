@@ -1,123 +1,75 @@
+import SectionLabel from '../components/SectionLabel'
 import ScrollReveal from '../components/ScrollReveal'
 import CTASection from '../components/CTASection'
+import { aboutSections } from '../data/content'
 import { company } from '../data/company'
-
-const values = [
-  {
-    title: 'Relationships First',
-    text: 'Strong real estate businesses are built through trust and long-term collaboration.',
-  },
-  {
-    title: 'Clarity',
-    text: 'We communicate opportunities and partnerships with honesty and professionalism.',
-  },
-  {
-    title: 'Network Thinking',
-    text: 'Value multiplies when people, properties, and partners connect intentionally.',
-  },
-  {
-    title: 'Modern Craft',
-    text: 'We combine premium real estate sensibility with digital product experience.',
-  },
-]
 
 export default function About() {
   return (
     <>
-      <section className="bg-cream py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[0.18em] text-emerald uppercase">About</p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-charcoal sm:text-5xl">
-            Who We Are
+      <section className="border-b border-rule py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5 md:px-8">
+          <SectionLabel>Company Profile</SectionLabel>
+          <h1 className="mt-4 font-display text-4xl text-espresso sm:text-5xl md:text-6xl">
+            {company.fullName}
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-            {company.name} is a modern real estate organization building a centralized network where
-            members discover opportunities, explore rentals, connect with partners, and grow together.
-            We sit between a real estate company, investment platform, property marketplace, membership
-            organization, and strategic partnership network.
+          <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
+            An editorial company profile for a real estate journal and boutique property house—
+            cultured, selective, and oriented toward lasting relationships.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <ScrollReveal>
-            <article className="h-full rounded-[2rem] border border-border bg-surface p-6 sm:p-8">
-              <h2 className="font-display text-2xl font-bold text-charcoal">Mission</h2>
-              <p className="mt-3 leading-relaxed text-muted">
-                Our mission is to create a connected real estate network where people can discover
-                opportunities, develop relationships, and collaborate.
-              </p>
-            </article>
-          </ScrollReveal>
-          <ScrollReveal delay={80}>
-            <article className="h-full rounded-[2rem] border border-border bg-surface p-6 sm:p-8">
-              <h2 className="font-display text-2xl font-bold text-charcoal">Vision</h2>
-              <p className="mt-3 leading-relaxed text-muted">
-                Our vision is to build a trusted platform that brings people, properties, and
-                partnerships together.
-              </p>
-            </article>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="bg-surface py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-charcoal">Our Approach</h2>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-              We design membership, marketplace, and partnership experiences as one product system.
-              Members join for community and access. Partners collaborate for shared opportunity.
-              Properties and rentals become discovery layers—not the entire identity of the
-              organization.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-charcoal">Our Values</h2>
-          </ScrollReveal>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {values.map((v, i) => (
-              <ScrollReveal key={v.title} delay={i * 60}>
-                <article className="rounded-3xl border border-border p-6 shadow-soft">
-                  <h3 className="font-display text-lg font-bold text-charcoal">{v.title}</h3>
-                  <p className="mt-2 text-sm text-muted">{v.text}</p>
-                </article>
-              </ScrollReveal>
-            ))}
+      <section className="py-8 md:py-12">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="img-zoom">
+            <img
+              src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1800&q=80"
+              alt="Architectural detail in warm natural light"
+              className="aspect-[21/9] min-h-[240px] w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-charcoal py-16 text-white sm:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.18),_transparent_55%)]" />
-        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      {aboutSections.map((section, i) => (
+        <section
+          key={section.id}
+          className={`py-14 md:py-20 ${i % 2 === 1 ? 'bg-parchment' : ''}`}
+        >
+          <div className="mx-auto grid max-w-6xl gap-8 px-5 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:px-8">
+            <ScrollReveal>
+              <SectionLabel>{section.label}</SectionLabel>
+              <h2 className="mt-4 font-display text-3xl text-espresso sm:text-4xl">
+                {section.title}
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <p className="text-sm leading-relaxed text-muted sm:text-base md:pt-8">
+                {section.body}
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+      ))}
+
+      <section className="border-y border-rule py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5 md:px-8">
           <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl">
-              Why We Believe In Networks.
+            <SectionLabel>Philosophy</SectionLabel>
+            <h2 className="mt-4 font-display text-3xl text-espresso sm:text-4xl md:text-5xl">
+              Built For The Long Term.
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
               Strong real estate businesses are built through relationships, trust, collaboration,
-              and long-term thinking. A network creates leverage that isolated transactions cannot:
-              introductions compound, opportunities circulate, and partnerships deepen over time.
+              and sustainable growth. Ashlar is designed for people who prefer patience to noise—
+              and who understand that opportunity compounds when judgment is shared carefully.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      <CTASection
-        title="Join The AETHER Network"
-        description="Membership, partnerships, and opportunities—designed as one connected experience."
-        primaryLabel="Join Now"
-        primaryTo="/join"
-        secondaryLabel="Explore Properties"
-        secondaryTo="/properties"
-      />
+      <CTASection variant="parchment" title="Begin A Conversation" linkLabel="Contact Us →" linkTo="/contact" />
     </>
   )
 }

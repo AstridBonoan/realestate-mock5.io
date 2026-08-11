@@ -20,7 +20,7 @@ export function useScrollReveal() {
           observer.unobserve(entry.target)
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.12, rootMargin: '0px 0px -30px 0px' },
     )
 
     observer.observe(node)
@@ -28,31 +28,4 @@ export function useScrollReveal() {
   }, [])
 
   return { ref, visible }
-}
-
-export function useCountUp(target, enabled, duration = 1400) {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    if (!enabled) return undefined
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setValue(target)
-      return undefined
-    }
-
-    let frame
-    const start = performance.now()
-
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1)
-      const eased = 1 - (1 - progress) ** 3
-      setValue(Math.round(target * eased))
-      if (progress < 1) frame = requestAnimationFrame(tick)
-    }
-
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [target, enabled, duration])
-
-  return value
 }

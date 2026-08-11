@@ -1,123 +1,78 @@
 import { Link } from 'react-router-dom'
-import MembershipBenefit from '../components/MembershipBenefit'
-import MembershipDashboardPreview from '../components/MembershipDashboardPreview'
-import TeamMember from '../components/TeamMember'
+import SectionLabel from '../components/SectionLabel'
+import MembershipList from '../components/MembershipList'
+import TeamFeature from '../components/TeamFeature'
+import ImageCaption from '../components/ImageCaption'
 import CTASection from '../components/CTASection'
 import ScrollReveal from '../components/ScrollReveal'
-import { membershipBenefits, team } from '../data/content'
+import { membershipReasons, team } from '../data/content'
 
 export default function Membership() {
-  const featured = team.find((m) => m.featured)
-  const others = team.filter((m) => !m.featured)
-  const [horizontal, ...rest] = others
-
   return (
     <>
-      <section className="relative overflow-hidden bg-cream">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,0.12),_transparent_50%)]" />
-        <div className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8">
-          <p className="text-xs font-semibold tracking-[0.18em] text-emerald uppercase">
-            Membership
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            Membership Opens The Door.
+      <section className="border-b border-rule py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5 md:px-8">
+          <SectionLabel>Membership</SectionLabel>
+          <h1 className="mt-4 font-display text-4xl text-espresso sm:text-5xl md:text-6xl">
+            Become Part Of Something Growing.
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            Become part of a growing network built around relationships, real estate, and
-            opportunity.
+          <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
+            Membership is designed for people who want to connect, participate, and develop
+            meaningful relationships within the real estate community.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/join"
-              className="inline-flex w-full items-center justify-center rounded-full bg-emerald px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-dark sm:w-auto"
-            >
-              Join Now
-            </Link>
-            <a
-              href="#team"
-              className="inline-flex w-full items-center justify-center rounded-full border border-border bg-white px-7 py-3.5 text-sm font-semibold text-charcoal transition hover:border-emerald sm:w-auto"
-            >
-              Meet The Team
-            </a>
-          </div>
+          <Link to="/join" className="editorial-link mt-8 inline-block">
+            Apply For Membership →
+          </Link>
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
           <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-charcoal sm:text-4xl">
-              Membership Features
+            <SectionLabel>Why Join?</SectionLabel>
+            <h2 className="mt-3 font-display text-3xl text-espresso sm:text-4xl">
+              Why Membership
             </h2>
-            <p className="mt-2 text-muted">A dashboard-inspired look at what membership unlocks.</p>
           </ScrollReveal>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {membershipBenefits.map((b, i) => (
-              <ScrollReveal key={b.title} delay={i * 60}>
-                <MembershipBenefit {...b} />
-              </ScrollReveal>
-            ))}
-          </div>
+          <MembershipList items={membershipReasons} />
         </div>
       </section>
 
-      <section className="bg-surface py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-parchment py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
           <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-charcoal sm:text-4xl">
-              Membership Experience
-            </h2>
-            <p className="mt-2 max-w-2xl text-muted">
-              A polished preview of what the member experience could eventually look like. Visual
-              marketing mockup only — not a live dashboard.
-            </p>
-          </ScrollReveal>
-          <div className="mt-8">
-            <ScrollReveal>
-              <MembershipDashboardPreview />
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      <section id="team" className="scroll-mt-24 bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-charcoal sm:text-4xl">
-              Meet The Team
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              Placeholder profiles — replace names, bios, and images easily.
-            </p>
-          </ScrollReveal>
-          <div className="mt-8 space-y-6">
-            {featured && (
-              <ScrollReveal>
-                <TeamMember member={featured} variant="featured" />
-              </ScrollReveal>
-            )}
-            {horizontal && (
-              <ScrollReveal>
-                <TeamMember member={horizontal} variant="horizontal" />
-              </ScrollReveal>
-            )}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {rest.map((m, i) => (
-                <ScrollReveal key={m.id} delay={i * 70}>
-                  <TeamMember member={m} />
-                </ScrollReveal>
-              ))}
+            <div className="img-zoom">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80"
+                alt="Professionals in discussion around a table"
+                className="aspect-[21/9] min-h-[240px] w-full object-cover"
+              />
             </div>
+            <ImageCaption caption="Relationships remain at the center of every opportunity." />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <ScrollReveal>
+            <SectionLabel>05 / The Team</SectionLabel>
+            <h2 className="mt-3 font-display text-3xl text-espresso sm:text-4xl">The Team</h2>
+            <p className="mt-3 max-w-xl text-sm text-muted">
+              Placeholder portraits and biographies—easy to replace with your people.
+            </p>
+          </ScrollReveal>
+          <div className="mt-10">
+            <TeamFeature members={team} />
           </div>
         </div>
       </section>
 
       <CTASection
-        dark
         title="Would You Like To Become A Member?"
-        description="Join the network and become part of a growing community built around real estate opportunities and relationships."
-        primaryLabel="Join Now"
-        primaryTo="/join"
+        description="Join a growing community built around real estate knowledge, relationships, and opportunity."
+        linkLabel="Join Now →"
+        linkTo="/join"
       />
     </>
   )
